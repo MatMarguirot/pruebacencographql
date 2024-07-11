@@ -1,0 +1,60 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Address {
+  id: Int!
+  street: String!
+  number: Float!
+  users: [User!]!
+}
+
+type Phone {
+  id: Int!
+  prefix: String!
+  number: String!
+  user: User
+}
+
+type User {
+  id: Int!
+  rut: String!
+  first_name: String!
+  last_name: String!
+  address: Address
+  phone: Phone
+}
+
+type Query {
+  getUserById(id: Int!): User
+  getUserByRut(rut: String!): User
+  getAllUsers: [User!]
+  getPhoneById(id: Int!): Phone
+  getAddressById(id: Int!): Address
+}
+
+type Mutation {
+  createUser(createUserData: CreateUserInput!): User!
+  createPhone(createPhoneData: CreatePhoneInput!): Phone!
+  createAddress(createAddressData: CreateAddressInput!): Address!
+}
+
+input CreateUserInput {
+  first_name: String!
+  last_name: String!
+  rut: String!
+  phone_id: Int
+  address_id: Int
+}
+
+input CreatePhoneInput {
+  prefix: String!
+  number: String!
+  user_id: Int!
+}
+
+input CreateAddressInput {
+  street: String!
+  number: Float!
+  user_ids: [Int!]
+}

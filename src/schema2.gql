@@ -1,0 +1,30 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type UserSetting {
+  id: Int!
+  userId: Int!
+  verified: Boolean!
+}
+
+type User {
+  id: Int!
+  rut: String!
+  nombre: String!
+  settings: UserSetting
+}
+
+type Query {
+  GetUser(id: Int!): User
+  getUsers(ids: [Int!]!): [User!]!
+}
+
+type Mutation {
+  createUser(createUserData: CreateUserInput!): User!
+}
+
+input CreateUserInput {
+  username: String!
+  displayName: String
+}
